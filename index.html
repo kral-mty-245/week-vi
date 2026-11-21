@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WeeK VI · İndir</title>
+<meta name="description" content="WeeK VI: neon, suç ve imparatorluk. Windows ve Android için indir.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0614; --ink:#fff; --dim:#c9bfe0; --cyan:#19e6ff; --pink:#ff2f86; --amber:#ffb03b;
+    --card:rgba(16,8,30,.72); --line:rgba(255,255,255,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:Rubik,system-ui,sans-serif;line-height:1.5;overflow-x:hidden}
+  a{color:inherit}
+  .hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:48px 16px;
+    background:linear-gradient(90deg,rgba(11,6,20,.92) 0%,rgba(11,6,20,.55) 45%,rgba(11,6,20,.1) 100%),url(bg.jpg) center/cover no-repeat}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(transparent,var(--bg))}
+  .wrap{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .logo{font-weight:900;font-size:clamp(56px,11vw,120px);letter-spacing:-2px;line-height:.95}
+  .logo .w{color:var(--cyan);text-shadow:0 0 28px rgba(25,230,255,.55)}
+  .logo .v{color:var(--pink);text-shadow:0 0 28px rgba(255,47,134,.6)}
+  .tag{margin-top:14px;letter-spacing:.42em;font-weight:600;color:var(--dim);font-size:14px}
+  .lead{margin-top:22px;max-width:520px;font-size:18px;color:#ece6ff}
+  .ver{display:inline-block;margin-top:22px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--dim);background:rgba(0,0,0,.25)}
+  .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+  .btn{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px 22px;border-radius:16px;font-weight:800;font-size:18px;
+    transition:transform .15s,box-shadow .15s;min-width:240px}
+  .btn small{display:block;font-weight:400;font-size:13px;opacity:.85}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.win{background:var(--cyan);color:#041018;box-shadow:0 10px 30px rgba(25,230,255,.35)}
+  .btn.and{background:var(--pink);color:#fff;box-shadow:0 10px 30px rgba(255,47,134,.35)}
+  .btn svg{width:28px;height:28px;flex:none}
+  section{padding:64px 16px}
+  h2{font-size:clamp(26px,4vw,38px);font-weight:900;margin-bottom:24px}
+  h2 span{color:var(--cyan)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .card b{display:block;font-size:18px;margin-bottom:6px}
+  .card p{color:var(--dim);font-size:15px}
+  .card .ic{font-size:26px;margin-bottom:10px}
+  .steps{counter-reset:s;display:grid;gap:12px}
+  .steps li{list-style:none;counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 16px 56px;position:relative;color:#e9e3ff}
+  .steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--amber);color:#1a0d00;font-weight:800;display:grid;place-items:center;font-size:14px}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+  h3{font-size:20px;margin-bottom:14px}
+  footer{padding:40px 16px;color:var(--dim);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+  @media (max-width:520px){.btn{min-width:0;width:100%}.lead{font-size:16px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="logo"><span class="w">WeeK</span> <span class="v">VI</span></div>
+    <div class="tag">NEON · SUÇ · İMPARATORLUK</div>
+    <p class="lead">Dört yıl sonra Vice City'ye döndün. Yanında Mira, peşinde bir komiser, önünde koca bir şehir. Arkadaşlarınla online gir, şehri birlikte ele geçirin.</p>
+    <span class="ver" id="ver">Sürüm 3.2.0</span>
+    <div class="btns">
+      <a class="btn win" id="dl-win" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Windows.zip">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.4 1.2L21 21V12.6h-9.6v7.1Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg>
+        <span>Windows'a indir<small>ZIP · ~390 MB</small></span>
+      </a>
+      <a class="btn and" id="dl-and" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Android.apk">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5 19.5 6.2a.4.4 0 0 0-.7-.4l-1.9 3.3a11.6 11.6 0 0 0-9.8 0L5.2 5.8a.4.4 0 1 0-.7.4l1.9 3.3A10.9 10.9 0 0 0 1 18h22a10.9 10.9 0 0 0-5.4-8.5ZM7 15.3a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>
+        <span>Android'e indir<small>APK</small></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Oyunda <span>neler var?</span></h2>
+    <div class="grid">
+      <div class="card"><div class="ic">🌴</div><b>Açık dünya Vice City</b><p>Sahiller, neon kulüpler, gökdelenler, liman ve adalar. Gece-gündüz döngüsü ve hava durumu.</p></div>
+      <div class="card"><div class="ic">🎬</div><b>Yepyeni hikâye</b><p>3 bölüm, 15 görev. Kendi adınla oynuyorsun: soygunlar, ihanet ve son büyük vurgun.</p></div>
+      <div class="card"><div class="ic">👥</div><b>Online mod</b><p>Arkadaşlarınla aynı şehirde: sesli sohbet, ortak daireler, yarışlar ve kaos.</p></div>
+      <div class="card"><div class="ic">🚗</div><b>Gerçek 3D modeller</b><p>Arabalar, motorlar, binalar, mobilyalar ve sokak eşyaları yeni 3D modellerle.</p></div>
+      <div class="card"><div class="ic">💻</div><b>WeeKOS bilgisayar</b><p>Her dairede çalışan bir bilgisayar: tarayıcı, oyunlar, terminal, hatta virüsler.</p></div>
+      <div class="card"><div class="ic">⚙️</div><b>Detaylı grafik ayarları</b><p>Düşük telefonlardan güçlü bilgisayarlara kadar her cihaza göre ayarlanır.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two">
+    <div>
+      <h3>Windows'a kurulum</h3>
+      <ol class="steps">
+        <li>ZIP dosyasını indir ve sağ tık → <b>Tümünü ayıkla</b>.</li>
+        <li>Açılan klasörde <b>WeeK VI.exe</b>'ye çift tıkla.</li>
+        <li>"Windows bilgisayarınızı korudu" çıkarsa <b>Ek bilgi → Yine de çalıştır</b>.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Android'e kurulum</h3>
+      <ol class="steps">
+        <li>APK dosyasını telefondan indir.</li>
+        <li>İndirilen dosyaya dokun. Sorarsa <b>bu kaynaktan yüklemeye izin ver</b>.</li>
+        <li><b>Yükle</b>'ye bas, bitince WeeK VI'yı aç.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  WeeK VI · arkadaşlar arası hayran oyunu · <a href="https://github.com/kral-mty-245/week-vi/releases">tüm sürümler</a>
+</footer>
+
+<script>
+  // show the real latest release version and sizes (falls back to the static text if GitHub can't be reached)
+  fetch('https://api.github.com/repos/kral-mty-245/week-vi/releases/latest')
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j) return;
+      document.getElementById('ver').textContent = 'Sürüm ' + (j.tag_name || '').replace(/^v/, '');
+      for (const a of j.assets || []) {
+        const mb = Math.round(a.size / 1048576) + ' MB';
+        if (/\.zip$/i.test(a.name)) document.querySelector('#dl-win small').textContent = 'ZIP · ' + mb;
+        if (/\.apk$/i.test(a.name)) document.querySelector('#dl-and small').textContent = 'APK · ' + mb;
+      }
+      if (!(j.assets || []).some(a => /\.apk$/i.test(a.name))) {
+        const b = document.getElementById('dl-and');
+        b.removeAttribute('href'); b.style.opacity = .5; b.style.cursor = 'default';
+        b.querySelector('small').textContent = 'Çok yakında';
+      }
+    }).catch(() => {});
+</script>
+</body>
+</html>
