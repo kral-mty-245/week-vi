@@ -4,129 +4,315 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WeeK VI · İndir</title>
-<meta name="description" content="WeeK VI: neon, suç ve imparatorluk. Windows ve Android için indir.">
-<link rel="icon" href="favicon.ico">
+<meta name="description" content="WeeK VI: neon, suç ve imparatorluk. Windows ve Android için ücretsiz indir.">
+<meta property="og:title" content="WeeK VI">
+<meta property="og:description" content="Vice City seni bekliyor. Windows ve Android için indir.">
+<meta property="og:image" content="logo.jpg">
+<meta name="theme-color" content="#120821">
+<link rel="icon" href="logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800;900&family=Monoton&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0614; --ink:#fff; --dim:#c9bfe0; --cyan:#19e6ff; --pink:#ff2f86; --amber:#ffb03b;
-    --card:rgba(16,8,30,.72); --line:rgba(255,255,255,.12);
+    --bg:#0c0618; --ink:#fff; --dim:#cbbfe6; --cyan:#19e6ff; --pink:#ff2f86; --amber:#ffb03b; --violet:#9b5cff;
+    --card:rgba(22,10,40,.62); --line:rgba(255,255,255,.12);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:Rubik,system-ui,sans-serif;line-height:1.5;overflow-x:hidden}
-  a{color:inherit}
-  .hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:48px 16px;
-    background:linear-gradient(90deg,rgba(11,6,20,.92) 0%,rgba(11,6,20,.55) 45%,rgba(11,6,20,.1) 100%),url(bg.jpg) center/cover no-repeat}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(transparent,var(--bg))}
-  .wrap{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
-  .logo{font-weight:900;font-size:clamp(56px,11vw,120px);letter-spacing:-2px;line-height:.95}
-  .logo .w{color:var(--cyan);text-shadow:0 0 28px rgba(25,230,255,.55)}
-  .logo .v{color:var(--pink);text-shadow:0 0 28px rgba(255,47,134,.6)}
-  .tag{margin-top:14px;letter-spacing:.42em;font-weight:600;color:var(--dim);font-size:14px}
-  .lead{margin-top:22px;max-width:520px;font-size:18px;color:#ece6ff}
-  .ver{display:inline-block;margin-top:22px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--dim);background:rgba(0,0,0,.25)}
-  .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
-  .btn{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px 22px;border-radius:16px;font-weight:800;font-size:18px;
-    transition:transform .15s,box-shadow .15s;min-width:240px}
-  .btn small{display:block;font-weight:400;font-size:13px;opacity:.85}
-  .btn:hover{transform:translateY(-2px)}
-  .btn.win{background:var(--cyan);color:#041018;box-shadow:0 10px 30px rgba(25,230,255,.35)}
-  .btn.and{background:var(--pink);color:#fff;box-shadow:0 10px 30px rgba(255,47,134,.35)}
-  .btn svg{width:28px;height:28px;flex:none}
-  section{padding:64px 16px}
-  h2{font-size:clamp(26px,4vw,38px);font-weight:900;margin-bottom:24px}
-  h2 span{color:var(--cyan)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
-  .card b{display:block;font-size:18px;margin-bottom:6px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;width:100%;padding:0 16px;position:relative;z-index:2}
+
+  /* nav */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,backdrop-filter .3s}
+  nav.solid{background:rgba(12,6,24,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px}
+  .brand img{width:36px;height:36px;border-radius:9px;box-shadow:0 0 18px rgba(255,47,134,.5)}
+  .brand b{color:var(--cyan)} .brand i{font-style:normal;color:var(--pink)}
+  .navlinks{display:flex;gap:22px;font-weight:600;font-size:15px;color:var(--dim)}
+  .navlinks a:hover{color:#fff}
+  .navcta{padding:9px 16px;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--violet));color:#fff!important;font-weight:800}
+
+  /* hero */
+  .hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:110px 0 80px;overflow:hidden}
+  .hero .bgimg{position:absolute;inset:-4%;background:url(bg.jpg) center/cover no-repeat;transform:scale(1.06);animation:drift 22s ease-in-out infinite alternate;z-index:0}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+    linear-gradient(90deg,rgba(12,6,24,.96) 0%,rgba(12,6,24,.72) 42%,rgba(12,6,24,.25) 100%),
+    linear-gradient(180deg,rgba(12,6,24,.2) 60%,var(--bg) 100%)}
+  .grid-floor{position:absolute;left:-50%;right:-50%;bottom:-10%;height:45%;z-index:1;opacity:.35;
+    background-image:linear-gradient(rgba(255,47,134,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(25,230,255,.6) 1px,transparent 1px);
+    background-size:60px 60px;transform:perspective(420px) rotateX(62deg);animation:floor 3s linear infinite;
+    mask-image:linear-gradient(transparent,#000 70%)}
+  @keyframes floor{to{background-position:0 60px,0 0}}
+  @keyframes drift{to{transform:scale(1.12) translate(-1.5%,-1%)}}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(255,47,134,.15);border:1px solid rgba(255,47,134,.45);color:#ffc2dc;font-size:13px;font-weight:600;letter-spacing:.06em}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink);animation:pulse 1.4s infinite}
+  @keyframes pulse{50%{opacity:.3}}
+  .title{font-weight:900;font-size:clamp(64px,12vw,148px);line-height:.88;letter-spacing:-3px;margin-top:18px}
+  .title .w{background:linear-gradient(180deg,#9ff6ff,var(--cyan) 55%,#0a93c4);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(25,230,255,.55))}
+  .title .v{background:linear-gradient(180deg,#ffd0e4,var(--pink) 55%,#a3004a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(255,47,134,.6))}
+  .tag{margin-top:16px;letter-spacing:.5em;font-weight:600;color:var(--dim);font-size:14px}
+  .lead{margin-top:22px;max-width:560px;font-size:19px;color:#efe9ff}
+  .lead b{color:var(--amber)}
+  .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{position:relative;display:flex;align-items:center;gap:14px;padding:17px 24px;border-radius:18px;font-weight:800;font-size:18px;
+    transition:transform .18s,box-shadow .18s;min-width:250px;overflow:hidden}
+  .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 3.2s infinite}
+  @keyframes shine{0%,60%{left:-60%}100%{left:130%}}
+  .btn small{display:block;font-weight:500;font-size:13px;opacity:.85}
+  .btn:hover{transform:translateY(-3px) scale(1.02)}
+  .btn.win{background:linear-gradient(135deg,#7ff3ff,var(--cyan));color:#031018;box-shadow:0 12px 34px rgba(25,230,255,.4)}
+  .btn.and{background:linear-gradient(135deg,#ff6aa8,var(--pink));color:#fff;box-shadow:0 12px 34px rgba(255,47,134,.42)}
+  .btn.off{filter:grayscale(.6);opacity:.6;pointer-events:none}
+  .btn svg{width:30px;height:30px;flex:none}
+  .meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;color:var(--dim);font-size:14px}
+  .meta span{display:flex;align-items:center;gap:6px}
+  .meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+
+  .cover{position:relative;justify-self:center;width:min(420px,100%);perspective:1000px}
+  .cover .card3d{border-radius:26px;overflow:hidden;transform:rotateY(-12deg) rotateX(6deg);transition:transform .2s ease-out;
+    box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.12),0 0 60px rgba(155,92,255,.45)}
+  .cover img{display:block;width:100%;height:auto}
+  .cover .glow{position:absolute;inset:-14%;z-index:-1;background:radial-gradient(circle,rgba(255,47,134,.55),rgba(25,230,255,.25) 45%,transparent 70%);filter:blur(30px);animation:breathe 4s ease-in-out infinite}
+  @keyframes breathe{50%{opacity:.6;transform:scale(.94)}}
+  .badge{position:absolute;right:-10px;top:18px;background:var(--amber);color:#2a1300;font-weight:900;padding:8px 14px;border-radius:12px;transform:rotate(8deg);box-shadow:0 10px 24px rgba(255,176,59,.45);font-size:14px}
+
+  /* marquee */
+  .marquee{border-block:1px solid var(--line);background:linear-gradient(90deg,rgba(255,47,134,.12),rgba(25,230,255,.12));overflow:hidden;white-space:nowrap;padding:14px 0}
+  .marquee div{display:inline-block;animation:mq 30s linear infinite;font-weight:800;letter-spacing:.2em;font-size:15px;color:#f3eaff}
+  .marquee em{font-style:normal;color:var(--pink);margin:0 18px}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  section{padding:90px 0;position:relative}
+  .eyebrow{color:var(--pink);font-weight:800;letter-spacing:.3em;font-size:13px}
+  h2{font-size:clamp(30px,4.6vw,50px);font-weight:900;line-height:1.05;margin:10px 0 34px}
+  h2 span{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .2s,border-color .2s,box-shadow .2s;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(255,47,134,.18),transparent 40%);opacity:0;transition:opacity .2s}
+  .card:hover{transform:translateY(-4px);border-color:rgba(255,47,134,.5);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+  .card:hover::before{opacity:1}
+  .card .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:14px;background:linear-gradient(135deg,rgba(25,230,255,.25),rgba(255,47,134,.25));border:1px solid var(--line)}
+  .card b{display:block;font-size:19px;margin-bottom:6px}
   .card p{color:var(--dim);font-size:15px}
-  .card .ic{font-size:26px;margin-bottom:10px}
-  .steps{counter-reset:s;display:grid;gap:12px}
-  .steps li{list-style:none;counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 16px 56px;position:relative;color:#e9e3ff}
-  .steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--amber);color:#1a0d00;font-weight:800;display:grid;place-items:center;font-size:14px}
-  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
-  h3{font-size:20px;margin-bottom:14px}
-  footer{padding:40px 16px;color:var(--dim);font-size:13px;text-align:center;border-top:1px solid var(--line)}
-  @media (max-width:520px){.btn{min-width:0;width:100%}.lead{font-size:16px}}
+
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .story .pic{border-radius:24px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px var(--line);aspect-ratio:16/10;background:url(bg.jpg) 30% center/cover}
+  .acts{display:grid;gap:14px}
+  .act{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .act .n{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:18px;color:#1a0d00;background:var(--amber)}
+  .act:nth-child(2) .n{background:var(--cyan);color:#031018}
+  .act:nth-child(3) .n{background:var(--pink);color:#fff}
+  .act b{display:block;font-size:17px}
+  .act p{color:var(--dim);font-size:14.5px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px}
+  .stat{text-align:center;padding:26px 10px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+  .stat b{display:block;font-size:clamp(30px,4vw,44px);font-weight:900;background:linear-gradient(180deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{color:var(--dim);font-size:14px}
+
+  .install{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+  .box h3{display:flex;align-items:center;gap:10px;font-size:21px;margin-bottom:16px}
+  .box h3 svg{width:26px;height:26px}
+  .steps{counter-reset:s;display:grid;gap:10px}
+  .steps li{list-style:none;counter-increment:s;padding:12px 12px 12px 50px;position:relative;color:#ebe5ff;border-radius:12px;background:rgba(255,255,255,.04)}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--amber);color:#1a0d00;font-weight:800;display:grid;place-items:center;font-size:14px}
+
+  .final{text-align:center;padding:110px 0;background:radial-gradient(ellipse at center,rgba(155,92,255,.28),transparent 65%)}
+  .final .btns{justify-content:center}
+  footer{padding:36px 0;color:var(--dim);font-size:13px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+  .reveal.on{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero .wrap,.story,.install{grid-template-columns:1fr}
+    .cover{order:-1;width:min(300px,80%)}
+    .navlinks a:not(.navcta){display:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:520px){.btn{min-width:0;width:100%}.lead{font-size:16.5px}.title{letter-spacing:-2px}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<header class="hero">
+<nav id="nav">
   <div class="wrap">
-    <div class="logo"><span class="w">WeeK</span> <span class="v">VI</span></div>
-    <div class="tag">NEON · SUÇ · İMPARATORLUK</div>
-    <p class="lead">Dört yıl sonra Vice City'ye döndün. Yanında Mira, peşinde bir komiser, önünde koca bir şehir. Arkadaşlarınla online gir, şehri birlikte ele geçirin.</p>
-    <span class="ver" id="ver">Sürüm 3.2.0</span>
-    <div class="btns">
-      <a class="btn win" id="dl-win" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Windows.zip">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.4 1.2L21 21V12.6h-9.6v7.1Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg>
-        <span>Windows'a indir<small>ZIP · ~390 MB</small></span>
-      </a>
-      <a class="btn and" id="dl-and" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Android.apk">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5 19.5 6.2a.4.4 0 0 0-.7-.4l-1.9 3.3a11.6 11.6 0 0 0-9.8 0L5.2 5.8a.4.4 0 1 0-.7.4l1.9 3.3A10.9 10.9 0 0 0 1 18h22a10.9 10.9 0 0 0-5.4-8.5ZM7 15.3a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>
-        <span>Android'e indir<small>APK</small></span>
-      </a>
+    <a class="brand" href="#"><img src="logo.jpg" alt=""><span><b>WeeK</b> <i>VI</i></span></a>
+    <div class="navlinks">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#hikaye">Hikâye</a>
+      <a href="#kurulum">Kurulum</a>
+      <a class="navcta" href="#indir">İndir</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="indir">
+  <div class="bgimg"></div>
+  <div class="grid-floor"></div>
+  <div class="wrap">
+    <div>
+      <span class="kicker"><span class="dot"></span><span id="ver">SÜRÜM 3.2.0 · ÇIKTI</span></span>
+      <h1 class="title"><span class="w">WeeK</span><br><span class="v">VI</span></h1>
+      <div class="tag">NEON · SUÇ · İMPARATORLUK</div>
+      <p class="lead">Dört yıl sonra <b>Vice City</b>'ye döndün. Yanında Mira, peşinde yozlaşmış bir komiser, önünde koca bir şehir. Arkadaşlarını topla, şehri birlikte ele geçirin.</p>
+      <div class="btns">
+        <a class="btn win" id="dl-win" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Windows.zip">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.4 1.2L21 21V12.6h-9.6v7.1Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg>
+          <span>Windows'a indir<small>ZIP · ~390 MB</small></span>
+        </a>
+        <a class="btn and" id="dl-and" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Android.apk">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5 19.5 6.2a.4.4 0 0 0-.7-.4l-1.9 3.3a11.6 11.6 0 0 0-9.8 0L5.2 5.8a.4.4 0 1 0-.7.4l1.9 3.3A10.9 10.9 0 0 0 1 18h22a10.9 10.9 0 0 0-5.4-8.5ZM7 15.3a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>
+          <span>Android'e indir<small>APK</small></span>
+        </a>
+      </div>
+      <div class="meta"><span>Ücretsiz</span><span>Online çok oyunculu</span><span>Türkçe</span></div>
+    </div>
+    <div class="cover">
+      <div class="glow"></div>
+      <div class="card3d" id="tilt"><img src="logo.jpg" alt="WeeK VI kapak"></div>
+      <div class="badge">YENİ HİKÂYE!</div>
     </div>
   </div>
 </header>
 
-<section>
+<div class="marquee"><div>
+  VICE CITY <em>✦</em> 15 GÖREV <em>✦</em> ONLINE MOD <em>✦</em> 3D MODELLER <em>✦</em> WeeKOS <em>✦</em> SOYGUNLAR <em>✦</em> NEON GECELER <em>✦</em> SESLİ SOHBET <em>✦</em>
+  VICE CITY <em>✦</em> 15 GÖREV <em>✦</em> ONLINE MOD <em>✦</em> 3D MODELLER <em>✦</em> WeeKOS <em>✦</em> SOYGUNLAR <em>✦</em> NEON GECELER <em>✦</em> SESLİ SOHBET <em>✦</em>
+</div></div>
+
+<section id="ozellikler">
   <div class="wrap">
-    <h2>Oyunda <span>neler var?</span></h2>
-    <div class="grid">
-      <div class="card"><div class="ic">🌴</div><b>Açık dünya Vice City</b><p>Sahiller, neon kulüpler, gökdelenler, liman ve adalar. Gece-gündüz döngüsü ve hava durumu.</p></div>
-      <div class="card"><div class="ic">🎬</div><b>Yepyeni hikâye</b><p>3 bölüm, 15 görev. Kendi adınla oynuyorsun: soygunlar, ihanet ve son büyük vurgun.</p></div>
-      <div class="card"><div class="ic">👥</div><b>Online mod</b><p>Arkadaşlarınla aynı şehirde: sesli sohbet, ortak daireler, yarışlar ve kaos.</p></div>
-      <div class="card"><div class="ic">🚗</div><b>Gerçek 3D modeller</b><p>Arabalar, motorlar, binalar, mobilyalar ve sokak eşyaları yeni 3D modellerle.</p></div>
-      <div class="card"><div class="ic">💻</div><b>WeeKOS bilgisayar</b><p>Her dairede çalışan bir bilgisayar: tarayıcı, oyunlar, terminal, hatta virüsler.</p></div>
-      <div class="card"><div class="ic">⚙️</div><b>Detaylı grafik ayarları</b><p>Düşük telefonlardan güçlü bilgisayarlara kadar her cihaza göre ayarlanır.</p></div>
+    <div class="eyebrow reveal">ÖZELLİKLER</div>
+    <h2 class="reveal">Bir şehir dolusu <span>kaos</span></h2>
+    <div class="features">
+      <div class="card reveal"><div class="ic">🌴</div><b>Açık dünya Vice City</b><p>Sahiller, neon kulüpler, gökdelenler, liman ve adalar. Gece-gündüz döngüsü, yağmur ve gün batımı.</p></div>
+      <div class="card reveal"><div class="ic">🎬</div><b>Yepyeni hikâye</b><p>3 bölüm, 15 görev. Kendi adınla oynuyorsun: soygunlar, ihanet ve son büyük vurgun.</p></div>
+      <div class="card reveal"><div class="ic">👥</div><b>Online mod</b><p>Arkadaşlarınla aynı şehirde: sesli sohbet, ortak daireler, yarışlar ve bolca kaos.</p></div>
+      <div class="card reveal"><div class="ic">🚗</div><b>Gerçek 3D modeller</b><p>Arabalar, motorlar, binalar, mobilyalar ve sokak eşyaları yepyeni 3D modellerle.</p></div>
+      <div class="card reveal"><div class="ic">💻</div><b>WeeKOS bilgisayar</b><p>Her dairede çalışan bir bilgisayar: gerçek internet tarayıcısı, oyunlar, terminal ve virüsler.</p></div>
+      <div class="card reveal"><div class="ic">⚙️</div><b>Her cihaza uygun</b><p>17'den fazla grafik ayarı: eski telefonlardan canavar bilgisayarlara kadar akıcı.</p></div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap two">
-    <div>
-      <h3>Windows'a kurulum</h3>
-      <ol class="steps">
-        <li>ZIP dosyasını indir ve sağ tık → <b>Tümünü ayıkla</b>.</li>
-        <li>Açılan klasörde <b>WeeK VI.exe</b>'ye çift tıkla.</li>
-        <li>"Windows bilgisayarınızı korudu" çıkarsa <b>Ek bilgi → Yine de çalıştır</b>.</li>
-      </ol>
+<section id="hikaye">
+  <div class="wrap">
+    <div class="story">
+      <div class="pic reveal"></div>
+      <div>
+        <div class="eyebrow reveal">HİKÂYE</div>
+        <h2 class="reveal">Temiz bir sayfa <span>istiyordun</span></h2>
+        <div class="acts">
+          <div class="act reveal"><div class="n">1</div><div><b>Eve Dönüş</b><p>Gece otobüsü, Mira'nın borcu ve yanlış giden bir gece. Komiser Salgado artık ensende.</p></div></div>
+          <div class="act reveal"><div class="n">2</div><div><b>Ekip</b><p>Emekli efsane Teo ve hacker Nia ile bir soygun ekibi kur. Kuyumcu, liman, borsa.</p></div></div>
+          <div class="act reveal"><div class="n">3</div><div><b>Büyük Vurgun</b><p>İhanet gecesi, Kanlı Sahil ve gün batımında son dalga. Bu şehir artık kimin?</p></div></div>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3>Android'e kurulum</h3>
-      <ol class="steps">
-        <li>APK dosyasını telefondan indir.</li>
-        <li>İndirilen dosyaya dokun. Sorarsa <b>bu kaynaktan yüklemeye izin ver</b>.</li>
-        <li><b>Yükle</b>'ye bas, bitince WeeK VI'yı aç.</li>
-      </ol>
+    <div class="stats" style="margin-top:46px">
+      <div class="stat reveal"><b data-n="15">0</b><span>Hikâye görevi</span></div>
+      <div class="stat reveal"><b data-n="37">0</b><span>3D model</span></div>
+      <div class="stat reveal"><b data-n="438">0</b><span>Hile kodu</span></div>
+      <div class="stat reveal"><b data-n="200">0</b><span>WeeKOS özelliği</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="kurulum">
+  <div class="wrap">
+    <div class="eyebrow reveal">KURULUM</div>
+    <h2 class="reveal">İki dakikada <span>şehirdesin</span></h2>
+    <div class="install">
+      <div class="box reveal">
+        <h3><svg viewBox="0 0 24 24" fill="#19e6ff"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.4 1.2L21 21V12.6h-9.6v7.1Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg>Windows</h3>
+        <ol class="steps">
+          <li>ZIP dosyasını indir, sağ tık → <b>Tümünü ayıkla</b>.</li>
+          <li>Açılan klasörde <b>WeeK VI.exe</b>'ye çift tıkla.</li>
+          <li>"Windows bilgisayarınızı korudu" çıkarsa <b>Ek bilgi → Yine de çalıştır</b>.</li>
+        </ol>
+      </div>
+      <div class="box reveal">
+        <h3><svg viewBox="0 0 24 24" fill="#ff2f86"><path d="M17.6 9.5 19.5 6.2a.4.4 0 0 0-.7-.4l-1.9 3.3a11.6 11.6 0 0 0-9.8 0L5.2 5.8a.4.4 0 1 0-.7.4l1.9 3.3A10.9 10.9 0 0 0 1 18h22a10.9 10.9 0 0 0-5.4-8.5ZM7 15.3a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>Android</h3>
+        <ol class="steps">
+          <li>APK dosyasını telefondan indir.</li>
+          <li>Dosyaya dokun, sorarsa <b>bu kaynaktan yüklemeye izin ver</b>.</li>
+          <li><b>Yükle</b>'ye bas, bitince WeeK VI'yı aç.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="reveal">Vice City <span>seni bekliyor</span></h2>
+    <div class="btns reveal">
+      <a class="btn win" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Windows.zip"><span>Windows'a indir</span></a>
+      <a class="btn and" id="dl-and2" href="https://github.com/kral-mty-245/week-vi/releases/latest/download/WeeK-VI-Android.apk"><span>Android'e indir</span></a>
     </div>
   </div>
 </section>
 
 <footer>
-  WeeK VI · arkadaşlar arası hayran oyunu · <a href="https://github.com/kral-mty-245/week-vi/releases">tüm sürümler</a>
+  <div class="wrap">
+    <span>WeeK VI · arkadaşlar arası hayran oyunu</span>
+    <a href="https://github.com/kral-mty-245/week-vi/releases">Tüm sürümler →</a>
+  </div>
 </footer>
 
 <script>
-  // show the real latest release version and sizes (falls back to the static text if GitHub can't be reached)
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30), { passive: true });
+
+  // tilt the cover with the mouse
+  const tilt = document.getElementById('tilt');
+  addEventListener('mousemove', e => {
+    const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+    tilt.style.transform = `rotateY(${-12 + x * 18}deg) rotateX(${6 - y * 14}deg)`;
+  });
+
+  // card spotlight follows the cursor
+  document.querySelectorAll('.card').forEach(c => c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+
+  // reveal on scroll + count-up numbers
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('on');
+    en.target.querySelectorAll('[data-n]').forEach(n => {
+      const end = +n.dataset.n, t0 = performance.now();
+      const step = t => { const k = Math.min(1, (t - t0) / 1200); n.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + (k === 1 && end >= 200 ? '+' : ''); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    });
+    io.unobserve(en.target);
+  }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // real latest version + sizes from GitHub; Android button waits until the APK is uploaded
   fetch('https://api.github.com/repos/kral-mty-245/week-vi/releases/latest')
     .then(r => r.ok ? r.json() : null)
     .then(j => {
       if (!j) return;
-      document.getElementById('ver').textContent = 'Sürüm ' + (j.tag_name || '').replace(/^v/, '');
-      for (const a of j.assets || []) {
+      document.getElementById('ver').textContent = 'SÜRÜM ' + (j.tag_name || '').replace(/^v/, '') + ' · ÇIKTI';
+      const assets = j.assets || [];
+      for (const a of assets) {
         const mb = Math.round(a.size / 1048576) + ' MB';
         if (/\.zip$/i.test(a.name)) document.querySelector('#dl-win small').textContent = 'ZIP · ' + mb;
         if (/\.apk$/i.test(a.name)) document.querySelector('#dl-and small').textContent = 'APK · ' + mb;
       }
-      if (!(j.assets || []).some(a => /\.apk$/i.test(a.name))) {
-        const b = document.getElementById('dl-and');
-        b.removeAttribute('href'); b.style.opacity = .5; b.style.cursor = 'default';
-        b.querySelector('small').textContent = 'Çok yakında';
+      if (!assets.some(a => /\.apk$/i.test(a.name))) {
+        for (const id of ['dl-and', 'dl-and2']) document.getElementById(id).classList.add('off');
+        document.querySelector('#dl-and small').textContent = 'Çok yakında';
       }
     }).catch(() => {});
 </script>
